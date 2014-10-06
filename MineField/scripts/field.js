@@ -1,10 +1,19 @@
 ﻿define(["require", "exports", "knockout"], function(require, exports, ko) {
+    function row(rowNumber, columnCount) {
+        var self = this;
+        self.cells = ko.observableArray();
+
+        for (var cellNr = 0; cellNr < columnCount; cellNr++) {
+            self.cells.push('row #' + rowNumber + 'cell #' + cellNr);
+        }
+    }
+
     function field(rowCount, columnCount) {
         var self = this;
         self.rows = ko.observableArray();
 
-        for (var i = 0; i < columnCount; i++) {
-            self.rows.push(i);
+        for (var rowNr = 0; rowNr < rowCount; rowNr++) {
+            self.rows.push(new row(rowNr, columnCount));
         }
     }
 

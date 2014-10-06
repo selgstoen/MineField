@@ -4,13 +4,13 @@
     <title>Mine Filed</title>
 </head>
     <body>
-        <table>
-            <tr>
-                <!--ko foreach: field.rows-->
-                <td><span data-bind="text : $data"></span></td>
-                <!--/ko-->
+        <h1><span data-bind="text : name"></span></h1>
+        <table data-bind="foreach: field.rows">
+            <tr data-bind="foreach: cells">
+                <td><span data-bind="text: $data"></span></td>
             </tr>
         </table>
+        
         <!-- Shortcut to load require and then load main-->
         <script src="/scripts/require.js"
                 data-main="/scripts/main"
