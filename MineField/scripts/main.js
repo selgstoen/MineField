@@ -4,11 +4,13 @@
     requirejs.config({
         baseUrl: "scripts",
         paths: {
-            "knockout": "knockout-3.2.0"
+            "knockout": "knockout-3.2.0",
+            "bombservice": "bombservice",
+            "models": "models"
         }
     });
 
-    require(['field'], function (fi) {
+    require(['field'], function (field) {
     });
 })();
 //# sourceMappingURL=main.js.map

@@ -1,27 +1,9 @@
-﻿define(["require", "exports", "knockout"], function(require, exports, ko) {
-    function row(rowNumber, columnCount) {
-        var self = this;
-        self.cells = ko.observableArray();
-
-        for (var cellNr = 0; cellNr < columnCount; cellNr++) {
-            self.cells.push('row #' + rowNumber + 'cell #' + cellNr);
-        }
-    }
-
-    function field(rowCount, columnCount) {
-        var self = this;
-        self.rows = ko.observableArray();
-
-        for (var rowNr = 0; rowNr < rowCount; rowNr++) {
-            self.rows.push(new row(rowNr, columnCount));
-        }
-    }
-
+﻿define(["require", "exports", "knockout", "models"], function(require, exports, ko, models) {
     var viewModel = function () {
         var self = this;
 
         self.name = "Mine Field";
-        self.field = new field(10, 10);
+        self.field = new models.field(10, 10, 5);
     };
 
     ko.applyBindings(new viewModel);
