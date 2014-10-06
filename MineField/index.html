@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Mine Filed</title>
+</head>
+    <body>
+        <table>
+            <tr>
+                <!--ko foreach: field.rows-->
+                <td><span data-bind="text : $data"></span></td>
+                <!--/ko-->
+            </tr>
+        </table>
+        <!-- Shortcut to load require and then load main-->
+        <script src="/scripts/require.js"
+                data-main="/scripts/main"
+                type="text/javascript"></script>
+    </body>
+</html>
