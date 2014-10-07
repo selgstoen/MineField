@@ -5,8 +5,8 @@
         baseUrl: "scripts",
         paths: {
             "knockout": "knockout-3.2.0",
-            "bombservice": "bombservice",
-            "models": "models"
+            "models": "models",
+            "bombservice": "bombservice"
         }
     });
 

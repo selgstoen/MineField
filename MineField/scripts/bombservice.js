@@ -1,8 +1,12 @@
-﻿define(["require", "exports"], function(require, exports) {
-    function getBombPositions(numberOfBombs) {
-        var b = [3, 5, 7, 9, 23];
+﻿define(["require", "exports", "models"], function(require, exports, models) {
+    function getBombPositions(numberOfBombs, numberOfRows, numberOfCoumns) {
+        var bombPositions = [];
 
-        return b;
+        for (var i = 0; i < numberOfBombs; i++) {
+            bombPositions.push(new models.bombPosition(i, i));
+        }
+
+        return bombPositions;
     }
     exports.getBombPositions = getBombPositions;
 });

@@ -1,5 +1,11 @@
-﻿export function getBombPositions(numberOfBombs: number) {
-    var b: number[] = [3, 5, 7, 9, 23];
+﻿import models = require("models");
 
-    return b;
+export function getBombPositions(numberOfBombs: number, numberOfRows: number, numberOfCoumns: number) {
+    var bombPositions = [];
+
+    for (var i = 0; i < numberOfBombs; i++) {
+        bombPositions.push(new models.bombPosition(i, i));
+    }
+
+    return bombPositions;
 }
