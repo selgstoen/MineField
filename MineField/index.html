@@ -7,7 +7,7 @@
         <h1><span data-bind="text : name"></span></h1>
         <table data-bind="foreach: field.rows">
             <tr data-bind="foreach: cells">
-                <td><span data-bind="text: $data"></span></td>
+                <td><span data-bind="text: rowNumber"></span>,<span data-bind="text: columnNumber"></span></td>
             </tr>
         </table>
         
