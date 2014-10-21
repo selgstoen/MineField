@@ -22,6 +22,7 @@
         self.columnNumber = columnNumber;
         self.isBomb = false;
         self.numberOfCloseBombs = 0;
+        self.displayValue = rowNumber + ' - ' + columnNumber;
     }
     exports.cell = cell;
 

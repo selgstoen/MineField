@@ -1,5 +1,4 @@
-﻿//import bs = require("bombservice");
-import ko = require("knockout");
+﻿import ko = require("knockout");
 
 export function bombPosition(rowIndex: number, columnIndex: number) {
     var self = this;
@@ -22,6 +21,7 @@ export function cell(rowNumber: number, columnNumber: number) {
     self.columnNumber = columnNumber;
     self.isBomb = false;
     self.numberOfCloseBombs = 0;
+    self.displayValue = rowNumber + ' - ' + columnNumber;
 }
 
 export function field(rowCount: number, columnCount: number, bombPositions: any) {

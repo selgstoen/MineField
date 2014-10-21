@@ -1,4 +1,77 @@
 ﻿define(["require", "exports", "models"], function(require, exports, models) {
+    function decorateCellsOnRow(row, bombPositions) {
+        var isBombPosition = function (rowIndex, columnIndex) {
+            for (var j = 0; j < bombPositions.length; j++) {
+                if (bombPositions[j].rowIndex == rowIndex && bombPositions[j].columnIndex == columnIndex) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        var decorateCell = function (cell) {
+            var rowNumber = cell.rowNumber;
+            var colNumber = cell.columnNumber;
+            var isBomb = false;
+
+            for (var j = 0; j < bombPositions.length; j++) {
+                if (bombPositions[j].rowIndex == rowNumber && bombPositions[j].columnIndex == colNumber) {
+                    isBomb = true;
+                    continue;
+                }
+
+                if (bombPositions[j].rowIndex == rowNumber + 1 && bombPositions[j].columnIndex == colNumber - 1) {
+                    cell.numberOfCloseBombs++;
+                    continue;
+                }
+                if (bombPositions[j].rowIndex == rowNumber && bombPositions[j].columnIndex == colNumber - 1) {
+                    cell.numberOfCloseBombs++;
+                    continue;
+                }
+                if (bombPositions[j].rowIndex == rowNumber - 1 && bombPositions[j].columnIndex == colNumber - 1) {
+                    cell.numberOfCloseBombs++;
+                    continue;
+                }
+
+                if (bombPositions[j].rowIndex == rowNumber + 1 && bombPositions[j].columnIndex == colNumber) {
+                    cell.numberOfCloseBombs++;
+                    continue;
+                }
+                if (bombPositions[j].rowIndex == rowNumber - 1 && bombPositions[j].columnIndex == colNumber) {
+                    cell.numberOfCloseBombs++;
+                    continue;
+                }
+
+                if (bombPositions[j].rowIndex == rowNumber + 1 && bombPositions[j].columnIndex == colNumber + 1) {
+                    cell.numberOfCloseBombs++;
+                    continue;
+                }
+                if (bombPositions[j].rowIndex == rowNumber && bombPositions[j].columnIndex == colNumber + 1) {
+                    cell.numberOfCloseBombs++;
+                    continue;
+                }
+                if (bombPositions[j].rowIndex == rowNumber - 1 && bombPositions[j].columnIndex == colNumber + 1) {
+                    cell.numberOfCloseBombs++;
+                    continue;
+                }
+
+                if (isBomb) {
+                    cell.displayValue = 'B';
+                } else {
+                    cell.displayValue = cell.numberOfCloseBombs;
+                }
+            }
+            //if (isBombPosition(cell.columnNumber, cell.rowNumber)) {
+            //    cell.displayValue = 'B';
+            //}
+        };
+
+        for (var i = 0; i < row.cells().length; i++) {
+            decorateCell(row.cells()[i]);
+        }
+    }
+    exports.decorateCellsOnRow = decorateCellsOnRow;
+
     function getBombPositions(numberOfBombs, numberOfRows, numberOfCoumns) {
         var bombPositions = [];
 
@@ -13,7 +86,7 @@
         };
 
         var getRandomIndex = function (rangeEnd) {
-            return Math.floor(Math.random() * rangeEnd + 1);
+            return Math.floor(Math.random() * rangeEnd);
         };
 
         var getBombPosition = function (rowCount, columnCount) {
@@ -26,9 +99,10 @@
             var bombPosition = getBombPosition(numberOfRows, numberOfCoumns);
             if (!bombPositionAlreadyExists(bombPosition)) {
                 bombPositions.push(bombPosition);
-            } else {
-                break;
             }
+            //else {
+            //    break;
+            //}
         }
 
         return bombPositions;
