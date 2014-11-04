@@ -1,0 +1,6 @@
+D:\SandBox\MineField\MineField\bin\MineField.dll.config
+D:\SandBox\MineField\MineField\bin\MineField.dll
+D:\SandBox\MineField\MineField\bin\MineField.pdb
+D:\SandBox\MineField\MineField\obj\Debug\MineField.csprojResolveAssemblyReference.cache
+D:\SandBox\MineField\MineField\obj\Debug\MineField.dll
+D:\SandBox\MineField\MineField\obj\Debug\MineField.pdb

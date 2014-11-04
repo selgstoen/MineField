@@ -72,6 +72,8 @@
     <Content Include="scripts\knockout-3.2.0.debug.js" />
     <Content Include="scripts\knockout-3.2.0.js" />
     <Content Include="scripts\r.js" />
+    <Content Include="scripts\raphael-min.js" />
+    <Content Include="scripts\raphael.js" />
     <Content Include="scripts\require.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -88,6 +90,7 @@
     <TypeScriptCompile Include="scripts\models.ts" />
     <TypeScriptCompile Include="scripts\typings\knockout.mapper\knockout.mapper.d.ts" />
     <TypeScriptCompile Include="scripts\typings\knockout\knockout.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\raphael\raphael.d.ts" />
     <TypeScriptCompile Include="scripts\typings\requirejs\require.d.ts" />
   </ItemGroup>
   <PropertyGroup>
