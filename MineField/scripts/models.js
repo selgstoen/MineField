@@ -27,7 +27,8 @@
         self.isBomb = false;
         self.numberOfCloseBombs = 0;
         self.displayValue = rowNumber + ' - ' + columnNumber;
-        //self.displaySquare = square;
+        self.square = ko.observable;
+        self.label = ko.observable;
     }
     exports.cell = cell;
 

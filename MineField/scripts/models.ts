@@ -30,7 +30,8 @@ export function cell(rowNumber: number, columnNumber: number) {
     self.isBomb = false;
     self.numberOfCloseBombs = 0;
     self.displayValue = rowNumber + ' - ' + columnNumber;
-    //self.displaySquare = square;
+    self.square = ko.observable;
+    self.label = ko.observable;
 }
 
 export function field(rowCount: number, columnCount: number, bombPositions: any) {

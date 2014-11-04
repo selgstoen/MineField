@@ -94,17 +94,24 @@
     }
     exports.getBombPositions = getBombPositions;
 
-    function printRow(row) {
+    function printRow(graph, row) {
         var printCell = function (cell) {
             var x = cell.rowNumber * 100;
             var y = cell.columnNumber * 100;
-            var paper = Raphael(10, 50, 10000, 10000);
-            var rect = paper.rect(x, y, 100, 100);
+            var rect = graph.rect(x, y, 100, 100);
             rect.attr("fill", "green");
             rect.attr("stroke", "#fff");
-            var label = paper.text(x + 50, y + 50, cell.displayValue);
+            rect.node.onclick = function () {
+                cell.label.attr("fill", "red");
+            };
+            cell.square = rect;
+            var label = graph.text(x + 50, y + 50, cell.displayValue);
             label.attr("fill", "black");
             label.attr("font-size", "20");
+            label.node.onclick = function () {
+                cell.label.attr("fill", "red");
+            };
+            cell.label = label;
         };
 
         for (var i = 0; i < row.cells().length; i++) {
