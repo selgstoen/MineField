@@ -2,15 +2,6 @@
 
 export function decorateCellsOnRow(row, bombPositions) {
 
-    var isBombPosition = function (rowIndex:number, columnIndex:number){
-        for (var j = 0; j < bombPositions.length; j++) {
-            if (bombPositions[j].rowIndex == rowIndex && bombPositions[j].columnIndex == columnIndex) {
-                return true;
-            }   
-        }
-        return false;
-    }
-
     var decorateCell = function (cell) {
         var rowNumber = cell.rowNumber;
         var colNumber = cell.columnNumber;
@@ -64,10 +55,6 @@ export function decorateCellsOnRow(row, bombPositions) {
                 cell.displayValue = cell.numberOfCloseBombs;
             }
         }
-
-        //if (isBombPosition(cell.columnNumber, cell.rowNumber)) {
-        //    cell.displayValue = 'B';
-        //}
     }
 
     for (var i = 0; i < row.cells().length; i++) {
@@ -103,11 +90,26 @@ export function getBombPositions(numberOfBombs: number, numberOfRows: number, nu
         if (!bombPositionAlreadyExists(bombPosition)) {
             bombPositions.push(bombPosition);
         }
-        //else {
-        //    break;
-        //}
     }
 
     return bombPositions;
+}
+
+export function printRow(row: any) {
+    var printCell = function (cell) {
+        var x = cell.rowNumber * 100;
+        var y = cell.columnNumber * 100;
+        var paper = Raphael(10, 50, 10000, 10000);
+        var rect = paper.rect(x, y, 100, 100);
+        rect.attr("fill", "green");
+        rect.attr("stroke", "#fff");
+        var label = paper.text(x + 50 , y + 50, cell.displayValue);
+        label.attr("fill", "black");
+        label.attr("font-size", "20");
+    }
+
+    for (var i = 0; i < row.cells().length; i++) {
+        printCell(row.cells()[i]);
+    }
 }
 

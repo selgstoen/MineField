@@ -1,14 +1,5 @@
 ﻿define(["require", "exports", "models"], function(require, exports, models) {
     function decorateCellsOnRow(row, bombPositions) {
-        var isBombPosition = function (rowIndex, columnIndex) {
-            for (var j = 0; j < bombPositions.length; j++) {
-                if (bombPositions[j].rowIndex == rowIndex && bombPositions[j].columnIndex == columnIndex) {
-                    return true;
-                }
-            }
-            return false;
-        };
-
         var decorateCell = function (cell) {
             var rowNumber = cell.rowNumber;
             var colNumber = cell.columnNumber;
@@ -61,9 +52,6 @@
                     cell.displayValue = cell.numberOfCloseBombs;
                 }
             }
-            //if (isBombPosition(cell.columnNumber, cell.rowNumber)) {
-            //    cell.displayValue = 'B';
-            //}
         };
 
         for (var i = 0; i < row.cells().length; i++) {
@@ -100,13 +88,29 @@
             if (!bombPositionAlreadyExists(bombPosition)) {
                 bombPositions.push(bombPosition);
             }
-            //else {
-            //    break;
-            //}
         }
 
         return bombPositions;
     }
     exports.getBombPositions = getBombPositions;
+
+    function printRow(row) {
+        var printCell = function (cell) {
+            var x = cell.rowNumber * 100;
+            var y = cell.columnNumber * 100;
+            var paper = Raphael(10, 50, 10000, 10000);
+            var rect = paper.rect(x, y, 100, 100);
+            rect.attr("fill", "green");
+            rect.attr("stroke", "#fff");
+            var label = paper.text(x + 50, y + 50, cell.displayValue);
+            label.attr("fill", "black");
+            label.attr("font-size", "20");
+        };
+
+        for (var i = 0; i < row.cells().length; i++) {
+            printCell(row.cells()[i]);
+        }
+    }
+    exports.printRow = printRow;
 });
 //# sourceMappingURL=bombservice.js.map
