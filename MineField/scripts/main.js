@@ -8,7 +8,8 @@
             "knockout": "knockout-3.2.0",
             "raphael": "raphael",
             "models": "models",
-            "bombservice": "bombservice"
+            "bombservice": "bombservice",
+            "displayservice": "displayservice"
         }
     });
 

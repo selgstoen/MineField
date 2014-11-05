@@ -11,10 +11,6 @@
         self.cells = ko.observableArray();
 
         for (var cellNr = 0; cellNr < columnCount; cellNr++) {
-            //var paper = Raphael(10, 50, 320, 200);
-            //var circle = paper.circle(50, 40, 10);
-            //circle.attr("fill", "#f00");
-            //circle.attr("stroke", "#fff");
             self.cells.push(new exports.cell(rowNumber, cellNr));
         }
     }
@@ -29,6 +25,14 @@
         self.displayValue = rowNumber + ' - ' + columnNumber;
         self.square = ko.observable;
         self.label = ko.observable;
+        self.flip = function () {
+            self.label.attr("fill", "black");
+            if (!this.isBomb) {
+                self.square.attr("fill", "white");
+            } else {
+                self.square.attr("fill", "red");
+            }
+        };
     }
     exports.cell = cell;
 

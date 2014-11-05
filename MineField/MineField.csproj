@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="scripts\bombservice.ts" />
+    <TypeScriptCompile Include="scripts\displayservice.ts" />
     <TypeScriptCompile Include="scripts\field.ts" />
     <TypeScriptCompile Include="scripts\main.ts" />
     <TypeScriptCompile Include="scripts\models.ts" />

@@ -51,6 +51,7 @@ export function decorateCellsOnRow(row, bombPositions) {
 
             if (isBomb) {
                 cell.displayValue = 'B';
+                cell.isBomb = true;
             } else {
                 cell.displayValue = cell.numberOfCloseBombs;
             }
@@ -93,29 +94,4 @@ export function getBombPositions(numberOfBombs: number, numberOfRows: number, nu
     }
 
     return bombPositions;
-}
-
-export function printRow(graph: any, row: any) {
-    var printCell = function (cell) {
-        var x = cell.rowNumber * 100;
-        var y = cell.columnNumber * 100;
-        var rect = graph.rect(x, y, 100, 100);
-        rect.attr("fill", "green");
-        rect.attr("stroke", "#fff");
-        rect.node.onclick = function () {
-            cell.label.attr("fill", "red");
-        };
-        cell.square = rect;
-        var label = graph.text(x + 50, y + 50, cell.displayValue);
-        label.attr("fill", "black");
-        label.attr("font-size", "20");
-        label.node.onclick = function () {
-            cell.label.attr("fill", "red");
-        };
-        cell.label = label;
-    }
-
-    for (var i = 0; i < row.cells().length; i++) {
-        printCell(row.cells()[i]);
-    }
 }
