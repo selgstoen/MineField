@@ -12,9 +12,8 @@
         ;
 
         function doSomething(e) {
-            //var clickedItem =cell.displayValue;
-            //alert("Hello " + clickedItem);
-            //console.log(cell);
+            var cell = e.target.param;
+            alert(cell.displayValue);
         }
     };
     ko.applyBindings(new viewModel);

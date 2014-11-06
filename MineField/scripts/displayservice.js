@@ -19,6 +19,7 @@
             label.node.onclick = cell.square.node.onclick;
             cell.label = label;
             cell.square.node.addEventListener("click", clicked, false);
+            cell.square.node.param = cell;
         };
 
         for (var i = 0; i < row.cells().length; i++) {
