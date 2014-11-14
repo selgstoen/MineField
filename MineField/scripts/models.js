@@ -32,6 +32,12 @@
             } else {
                 self.square.attr("fill", "red");
             }
+
+            if (this.displayValue === 0) {
+                return true;
+            }
+
+            return false;
         };
     }
     exports.cell = cell;

@@ -24,13 +24,19 @@ export function cell(rowNumber: number, columnNumber: number) {
     self.displayValue = rowNumber + ' - ' + columnNumber;
     self.square = ko.observable;
     self.label = ko.observable;
-    self.flip = function () {
+    self.flip = function () : boolean {
         self.label.attr("fill", "black");
         if (!this.isBomb) {
             self.square.attr("fill", "white");
         } else {
             self.square.attr("fill", "red");
         }
+
+        if (this.displayValue === 0) {
+            return true;
+        }
+
+        return false;
     }
 }
 
