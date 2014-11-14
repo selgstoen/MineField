@@ -87,6 +87,7 @@
     <TypeScriptCompile Include="scripts\bombservice.ts" />
     <TypeScriptCompile Include="scripts\displayservice.ts" />
     <TypeScriptCompile Include="scripts\field.ts" />
+    <TypeScriptCompile Include="scripts\flipservice.ts" />
     <TypeScriptCompile Include="scripts\main.ts" />
     <TypeScriptCompile Include="scripts\models.ts" />
     <TypeScriptCompile Include="scripts\typings\knockout.mapper\knockout.mapper.d.ts" />

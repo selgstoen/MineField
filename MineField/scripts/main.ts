@@ -11,8 +11,9 @@
                 "knockout": "knockout-3.2.0",
                 "raphael": "raphael",
                 "models": "models",
+                "flipservice": "flipservice",
                 "bombservice": "bombservice",
-                "displayservice" : "displayservice"
+                "displayservice": "displayservice"
             }
          }
         );
