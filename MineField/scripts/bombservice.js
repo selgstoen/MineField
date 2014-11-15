@@ -6,44 +6,37 @@
             var isBomb = false;
 
             for (var j = 0; j < bombPositions.length; j++) {
+                var p = bombPositions[j];
+
                 if (bombPositions[j].rowIndex == rowNumber && bombPositions[j].columnIndex == colNumber) {
                     isBomb = true;
-                    continue;
                 }
 
                 if (bombPositions[j].rowIndex == rowNumber + 1 && bombPositions[j].columnIndex == colNumber - 1) {
                     cell.numberOfCloseBombs++;
-                    continue;
                 }
                 if (bombPositions[j].rowIndex == rowNumber && bombPositions[j].columnIndex == colNumber - 1) {
                     cell.numberOfCloseBombs++;
-                    continue;
                 }
                 if (bombPositions[j].rowIndex == rowNumber - 1 && bombPositions[j].columnIndex == colNumber - 1) {
                     cell.numberOfCloseBombs++;
-                    continue;
                 }
 
                 if (bombPositions[j].rowIndex == rowNumber + 1 && bombPositions[j].columnIndex == colNumber) {
                     cell.numberOfCloseBombs++;
-                    continue;
                 }
                 if (bombPositions[j].rowIndex == rowNumber - 1 && bombPositions[j].columnIndex == colNumber) {
                     cell.numberOfCloseBombs++;
-                    continue;
                 }
 
                 if (bombPositions[j].rowIndex == rowNumber + 1 && bombPositions[j].columnIndex == colNumber + 1) {
                     cell.numberOfCloseBombs++;
-                    continue;
                 }
                 if (bombPositions[j].rowIndex == rowNumber && bombPositions[j].columnIndex == colNumber + 1) {
                     cell.numberOfCloseBombs++;
-                    continue;
                 }
                 if (bombPositions[j].rowIndex == rowNumber - 1 && bombPositions[j].columnIndex == colNumber + 1) {
                     cell.numberOfCloseBombs++;
-                    continue;
                 }
 
                 if (isBomb) {

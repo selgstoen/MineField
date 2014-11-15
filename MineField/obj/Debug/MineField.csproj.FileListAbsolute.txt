@@ -9,3 +9,4 @@ D:\Projects\MineField\MineField\bin\MineField.dll
 D:\Projects\MineField\MineField\bin\MineField.pdb
 D:\Projects\MineField\MineField\obj\Debug\MineField.dll
 D:\Projects\MineField\MineField\obj\Debug\MineField.pdb
+D:\Projects\MineField\MineField\obj\Debug\MineField.csprojResolveAssemblyReference.cache

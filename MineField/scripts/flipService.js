@@ -5,24 +5,47 @@
         return cell;
     };
 
-    var flipUp = function (rowNumber, colNumber, field) {
+    var flipDiagonally = function (rowNumber, colNumber, field, direction, limit) {
         var currentColNumber = colNumber;
 
-        while (currentColNumber >= 0) {
+        while (currentColNumber != limit) {
             var nextCell = findCellFromPosition(rowNumber, currentColNumber, field);
             if (!nextCell.flip()) {
                 break;
                 ;
             }
-            currentColNumber--;
+            currentColNumber = direction(currentColNumber);
         }
+    };
+
+    var flipVertically = function (rowNumber, colNumber, field, direction, limit) {
+        var currentRowNumber = rowNumber;
+
+        while (currentRowNumber != limit) {
+            var nextCell = findCellFromPosition(currentRowNumber, colNumber, field);
+            if (!nextCell.flip()) {
+                break;
+            }
+            currentRowNumber = direction(currentRowNumber);
+        }
+    };
+
+    var down = function (value) {
+        return value - 1;
+    };
+
+    var up = function (value) {
+        return value + 1;
     };
 
     function flipAroundCell(cell, field) {
         var rowNumber = cell.rowNumber;
         var colNumber = cell.columnNumber;
 
-        flipUp(rowNumber, colNumber, field);
+        flipDiagonally(rowNumber, colNumber, field, down, -1);
+        flipDiagonally(rowNumber, colNumber, field, up, field.rows().length + 1);
+        flipVertically(rowNumber, colNumber, field, down, -1);
+        flipVertically(rowNumber, colNumber, field, up, field.rows()[0].cells().length);
     }
     exports.flipAroundCell = flipAroundCell;
 });

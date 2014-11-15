@@ -13,7 +13,9 @@
 
         function flippedCell(e) {
             var cell = e.target.param;
-            fs.flipAroundCell(cell, self.field);
+            if (cell.flip()) {
+                fs.flipAroundCell(cell, self.field);
+            }
         }
     };
     ko.applyBindings(new viewModel);
