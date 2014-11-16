@@ -54,3 +54,12 @@ export function field(rowCount: number, columnCount: number, bombPositions: any)
     }
 }
 
+export function timer() {
+    var self = this;
+    self.running = false;
+    self.start = function () {
+        alert("starting...");
+        self.running = true;
+    }
+ }
+

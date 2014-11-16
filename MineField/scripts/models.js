@@ -56,5 +56,15 @@
         }
     }
     exports.field = field;
+
+    function timer() {
+        var self = this;
+        self.running = false;
+        self.start = function () {
+            alert("starting...");
+            self.running = true;
+        };
+    }
+    exports.timer = timer;
 });
 //# sourceMappingURL=models.js.map
