@@ -39,6 +39,10 @@
 
             return false;
         };
+        self.markBomb = function () {
+            self.label.attr("fill", "red");
+            self.label.attr("text", "B");
+        };
     }
     exports.cell = cell;
 

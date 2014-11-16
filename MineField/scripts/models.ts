@@ -38,6 +38,10 @@ export function cell(rowNumber: number, columnNumber: number) {
 
         return false;
     }
+    self.markBomb = function() {
+        self.label.attr("fill", "red");
+        self.label.attr("text", "B");
+    }
 }
 
 export function field(rowCount: number, columnCount: number, bombPositions: any) {

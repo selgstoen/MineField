@@ -14,7 +14,7 @@
         function flippedCell(e) {
             var cell = e.target.param;
             if (e.button === 2) {
-                alert("Mark");
+                cell.markBomb();
             } else {
                 if (cell.flip()) {
                     flipService.flipAroundCell(cell, self.field);
