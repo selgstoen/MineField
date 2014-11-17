@@ -21,12 +21,9 @@ export function row(rowNumber: number, columnCount: number) {
         return count;
     }
    
-
     for (var cellNr = 0; cellNr < columnCount; cellNr++) {
         self.cells.push(new cell(rowNumber, cellNr));
     }
-
-
 }
 
 export function cell(rowNumber: number, columnNumber: number) {
@@ -39,6 +36,7 @@ export function cell(rowNumber: number, columnNumber: number) {
     self.displayValue = rowNumber + ' - ' + columnNumber;
     self.square = ko.observable;
     self.label = ko.observable;
+
     self.flip = function (): boolean {
         self.isFlipped = true;
         self.label.attr("fill", "black");
@@ -136,4 +134,22 @@ export function watch(time: any) {
         clearTimeout(t);
     }
  }
+
+export function game(gamecontroller: any) {
+    var self = this;
+
+
+    var rect = gamecontroller.rect(400, 10, 100, 50);
+    rect.attr("fill", "gray");
+    rect.attr("stroke", "black");
+    rect.attr("stroke-width", 1);
+    rect.node.onclick = function () {
+        location.reload(true);
+    }
+
+    var value = gamecontroller.text(450, 35,  "Reset");
+    value.attr("fill", 'black');
+    value.attr("font-size", "20");
+    value.node.onclick = rect.node.onclick;
+}
 

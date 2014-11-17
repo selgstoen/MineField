@@ -13,7 +13,8 @@ export function printRow(graph: any, row: any, clicked: Function) {
 
         var rect = graph.rect(y, x, 100, 100);
         rect.attr("fill", startColor);
-        rect.attr("stroke", "#fff");
+        rect.attr("stroke", "black");
+        rect.attr("stroke-width", 5);
         cell.square = rect;
 
         var label = graph.text(y + 50, x + 50, cell.displayValue);
