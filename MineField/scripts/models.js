@@ -57,28 +57,38 @@
     }
     exports.field = field;
 
-    function timer(clock) {
+    function watch(time) {
         var self = this;
         self.elapsedTime = ko.observable;
         self.running = false;
-
         self.elapsedTime = 0;
+        var t;
 
-        var label = clock.text(0, 40, 'Time spent:');
+        var label = time.text(0, 40, 'Time spent:');
         label.attr("fill", 'black');
         label.attr("font-size", "20");
         label.attr({ 'text-anchor': 'start' });
 
-        var value = clock.text(110, 40, self.elapsedTime);
+        var value = time.text(110, 40, self.elapsedTime);
         value.attr("fill", 'black');
         value.attr("font-size", "20");
         value.attr({ 'text-anchor': 'start' });
 
+        var tick = function () {
+            self.elapsedTime = self.elapsedTime + 1;
+            value.attr("text", self.elapsedTime);
+            timer();
+        };
+
+        var timer = function () {
+            t = setTimeout(tick, 1000);
+        };
+
         self.start = function () {
-            self.elapsedTime = 1;
             self.running = true;
+            timer();
         };
     }
-    exports.timer = timer;
+    exports.watch = watch;
 });
 //# sourceMappingURL=models.js.map
