@@ -54,11 +54,26 @@ export function field(rowCount: number, columnCount: number, bombPositions: any)
     }
 }
 
-export function timer() {
+export function timer(clock: any) {
     var self = this;
+    self.elapsedTime  = ko.observable;
     self.running = false;
+
+    self.elapsedTime = 0;
+    
+    var label = clock.text(0, 40, 'Time spent:');
+    label.attr("fill", 'black');
+    label.attr("font-size", "20");
+    label.attr({ 'text-anchor': 'start' });
+
+    var value = clock.text(110, 40, self.elapsedTime);
+    value.attr("fill", 'black');
+    value.attr("font-size", "20");
+    value.attr({ 'text-anchor': 'start' });
+
+
     self.start = function () {
-        alert("starting...");
+        self.elapsedTime = 1;
         self.running = true;
     }
  }
