@@ -10,6 +10,17 @@
         var self = this;
         self.cells = ko.observableArray();
 
+        self.getNumberOfFlipped = function () {
+            var count = 0;
+            for (var i = 0; i < self.cells().length; i++) {
+                if (self.cells()[i].isFlipped) {
+                    count = count + 1;
+                }
+            }
+
+            return count;
+        };
+
         for (var cellNr = 0; cellNr < columnCount; cellNr++) {
             self.cells.push(new exports.cell(rowNumber, cellNr));
         }
@@ -21,12 +32,15 @@
         self.rowNumber = rowNumber;
         self.columnNumber = columnNumber;
         self.isBomb = false;
+        self.isFlipped = false;
         self.numberOfCloseBombs = 0;
         self.displayValue = rowNumber + ' - ' + columnNumber;
         self.square = ko.observable;
         self.label = ko.observable;
         self.flip = function () {
+            self.isFlipped = true;
             self.label.attr("fill", "black");
+            self.label.attr("text", self.displayValue);
             if (!this.isBomb) {
                 self.square.attr("fill", "white");
             } else {
@@ -54,8 +68,38 @@
         for (var rowNr = 0; rowNr < rowCount; rowNr++) {
             self.rows.push(new exports.row(rowNr, columnCount));
         }
+
+        self.getNumberOfFlipped = function () {
+            var count = 0;
+            for (var i = 0; i < self.rows().length; i++) {
+                count = count + self.rows()[i].getNumberOfFlipped();
+            }
+
+            return count;
+        };
     }
     exports.field = field;
+
+    function score(cunter) {
+        var self = this;
+        self.points = 0;
+
+        var label = cunter.text(0, 40, 'Score:');
+        label.attr("fill", 'black');
+        label.attr("font-size", "20");
+        label.attr({ 'text-anchor': 'start' });
+
+        var value = cunter.text(80, 40, self.points + "/100");
+        value.attr("fill", 'black');
+        value.attr("font-size", "20");
+        value.attr({ 'text-anchor': 'start' });
+
+        self.setpoints = function (points) {
+            self.points = points;
+            value.attr("text", self.points + "/100");
+        };
+    }
+    exports.score = score;
 
     function watch(time) {
         var self = this;
@@ -87,6 +131,10 @@
         self.start = function () {
             self.running = true;
             timer();
+        };
+
+        self.stop = function () {
+            clearTimeout(t);
         };
     }
     exports.watch = watch;
