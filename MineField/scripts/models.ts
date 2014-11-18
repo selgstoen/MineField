@@ -1,13 +1,8 @@
 ﻿import ko = require("knockout");
 
-export function table() {
-    var self = this;
-
-    self.draw = function() {
-        var background = Raphael(0, 0, 1500, 1500);
-        var t = background.rect(0, 0, 1500, 1500);
-        t.attr("fill", "#42c63f");
-    }
+export function background(graph: any) {
+    var b = graph.rect(0, 0, 1500, 1500);
+    b.attr("fill", "#42c63f");
 }
 
 export function bombPosition(rowIndex: number, columnIndex: number) {
@@ -88,16 +83,16 @@ export function field(rowCount: number, columnCount: number, bombPositions: any)
     }
 }
 
-export function score(cunter: any) {
+export function score(graph: any) {
     var self = this;
     self.points = 0;
 
-    var label = cunter.text(0, 40, 'Score:');
+    var label = graph.text(400, 50, 'Score:');
     label.attr("fill", 'black');
     label.attr("font-size", "20");
     label.attr({ 'text-anchor': 'start' });
 
-    var value = cunter.text(80, 40, self.points + "/100" );
+    var value = graph.text(480, 50, self.points + "/100" );
     value.attr("fill", 'black');
     value.attr("font-size", "20");
     value.attr({ 'text-anchor': 'start' });
@@ -108,19 +103,19 @@ export function score(cunter: any) {
     }
 }
 
-export function watch(time: any) {
+export function watch(graph: any) {
     var self = this;
     self.elapsedTime = ko.observable;
     self.running = false;
     self.elapsedTime = 0;
     var t;
 
-    var label = time.text(0, 40, 'Time spent:');
+    var label = graph.text(100, 50, 'Time spent:');
     label.attr("fill", 'black');
     label.attr("font-size", "20");
     label.attr({ 'text-anchor': 'start' });
 
-    var value = time.text(110, 40, self.elapsedTime);
+    var value = graph.text(210, 50, self.elapsedTime);
     value.attr("fill", 'black');
     value.attr("font-size", "20");
     value.attr({ 'text-anchor': 'start' });
@@ -145,11 +140,9 @@ export function watch(time: any) {
     }
  }
 
-export function game(gamecontroller: any) {
-    var self = this;
+export function game(graph: any) {
 
-
-    var rect = gamecontroller.rect(400, 10, 100, 50);
+    var rect = graph.rect(1000, 10, 100, 50);
     rect.attr("fill", "gray");
     rect.attr("stroke", "black");
     rect.attr("stroke-width", 1);
@@ -157,7 +150,7 @@ export function game(gamecontroller: any) {
         location.reload(true);
     }
 
-    var value = gamecontroller.text(450, 35,  "Reset");
+    var value = graph.text(1050, 35,  "Reset");
     value.attr("fill", 'black');
     value.attr("font-size", "20");
     value.node.onclick = rect.node.onclick;

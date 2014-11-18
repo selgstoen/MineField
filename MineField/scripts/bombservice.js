@@ -6,8 +6,6 @@
             var isBomb = false;
 
             for (var j = 0; j < bombPositions.length; j++) {
-                var p = bombPositions[j];
-
                 if (bombPositions[j].rowIndex == rowNumber && bombPositions[j].columnIndex == colNumber) {
                     isBomb = true;
                 }
