@@ -1,4 +1,15 @@
 ﻿define(["require", "exports", "knockout"], function(require, exports, ko) {
+    function table() {
+        var self = this;
+
+        self.draw = function () {
+            var background = Raphael(0, 0, 1500, 1500);
+            var t = background.rect(0, 0, 1500, 1500);
+            t.attr("fill", "#42c63f");
+        };
+    }
+    exports.table = table;
+
     function bombPosition(rowIndex, columnIndex) {
         var self = this;
         self.rowIndex = rowIndex;
@@ -43,7 +54,7 @@
             self.label.attr("fill", "black");
             self.label.attr("text", self.displayValue);
             if (!this.isBomb) {
-                self.square.attr("fill", "white");
+                self.square.attr("fill", "#42c63f");
             } else {
                 self.square.attr("fill", "red");
             }

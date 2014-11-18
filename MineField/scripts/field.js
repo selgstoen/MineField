@@ -1,10 +1,13 @@
 ﻿define(["require", "exports", "knockout", "models", "bombservice", "displayservice", "flipservice"], function(require, exports, ko, models, bombService, displayService, flipService) {
     var viewModel = function () {
         var self = this;
+        var table = new models.table();
+        table.draw();
         var board = Raphael(100, 100, 10000, 10000);
         var time = Raphael(100, 10, 1000, 100);
         var counter = Raphael(400, 10, 2000, 100);
         var gamecontroller = Raphael(600, 10, 1000, 100);
+
         var bombPositions = bombService.getBombPositions(10, 10, 10);
         self.watch = new models.watch(time);
         self.score = new models.score(counter);

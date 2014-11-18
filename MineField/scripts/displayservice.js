@@ -7,7 +7,7 @@
         var printCell = function (cell) {
             var x = cell.rowNumber * 100;
             var y = cell.columnNumber * 100;
-            var startColor = "blue";
+            var startColor = "#153f14";
 
             var rect = graph.rect(y, x, 100, 100);
             rect.attr("fill", startColor);
