@@ -42,7 +42,7 @@ export function flipAroundCell(cell: any, field: any) {
     var colNumber = cell.columnNumber;
 
     flipDiagonally(rowNumber, colNumber, field, down, -1);
-    flipDiagonally(rowNumber, colNumber, field, up, field.rows().length + 1);
+    flipDiagonally(rowNumber, colNumber, field, up, field.rows().length);
     flipVertically(rowNumber, colNumber, field, down, -1);
     flipVertically(rowNumber, colNumber, field, up, field.rows()[0].cells().length);
 }
