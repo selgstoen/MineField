@@ -37,6 +37,7 @@ export function cell(rowNumber: number, columnNumber: number) {
     self.columnNumber = columnNumber;
     self.isBomb = false;
     self.isFlipped = false;
+    self.allCellsAroundFlipped = false;
     self.numberOfCloseBombs = 0;
     self.displayValue = rowNumber + ' - ' + columnNumber;
     self.square = ko.observable;

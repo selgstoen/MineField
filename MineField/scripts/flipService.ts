@@ -5,44 +5,43 @@
 }
 
 
-var flipDiagonally = function (rowNumber: any, colNumber: any, field: any, direction: Function, limit: any) {
-    var currentColNumber = colNumber;
-
-    while (currentColNumber != limit) {
-        var nextCell = findCellFromPosition(rowNumber, currentColNumber, field);
-        if (!nextCell.flip()) {
-            break;;
+var flipIfNotFlipped = function(cell: any, field: any) {
+    if (!cell.isFlipped) {
+        if (cell.flip()) {
+            flipAroundCell(cell, field);
         }
-        currentColNumber = direction(currentColNumber);
     }
-}
-
-var flipVertically = function (rowNumber: any, colNumber: any, field: any, direction: Function, limit: any) {
-    var currentRowNumber = rowNumber;
-
-    while (currentRowNumber != limit) {
-        var nextCell = findCellFromPosition(currentRowNumber, colNumber, field);
-        if (!nextCell.flip()) {
-            break;
-        }
-        currentRowNumber = direction(currentRowNumber);
-    }
-}
-
-var down = function(value) {
-    return value - 1;
-}
-
-var up = function(value) {
-    return value + 1;
 }
 
 export function flipAroundCell(cell: any, field: any) {
     var rowNumber = cell.rowNumber;
     var colNumber = cell.columnNumber;
 
-    flipDiagonally(rowNumber, colNumber, field, down, -1);
-    flipDiagonally(rowNumber, colNumber, field, up, field.rows().length);
-    flipVertically(rowNumber, colNumber, field, down, -1);
-    flipVertically(rowNumber, colNumber, field, up, field.rows()[0].cells().length);
+    if (cell.allCellsAroundFlipped) {
+        return;
+    }
+
+    if (rowNumber > 0) {
+        var upCell = findCellFromPosition(rowNumber - 1,colNumber, field);
+        flipIfNotFlipped(upCell, field);
+    }
+
+    if (rowNumber < field.rows().length - 1) {
+        var downCell = findCellFromPosition(rowNumber + 1, colNumber, field);
+        flipIfNotFlipped(downCell, field);
+    }
+
+    if (colNumber  > 0) {
+        var leftCell = findCellFromPosition(rowNumber, colNumber - 1, field);
+        flipIfNotFlipped(leftCell, field);
+    }
+
+
+    if (colNumber < field.rows()[0].cells().length - 1) {
+        var rightCell = findCellFromPosition(rowNumber, colNumber + 1, field);
+        flipIfNotFlipped(rightCell, field);
+    }
+
+    cell.allCellsAroundFlipped = true;
 }
+
