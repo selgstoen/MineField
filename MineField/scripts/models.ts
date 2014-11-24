@@ -84,7 +84,7 @@ export function field(rowCount: number, columnCount: number, bombPositions: any)
     }
 }
 
-export function score(graph: any) {
+export function score(graph: any, bombs: any, squares: any) {
     var self = this;
     self.points = 0;
 
@@ -93,14 +93,14 @@ export function score(graph: any) {
     label.attr("font-size", "20");
     label.attr({ 'text-anchor': 'start' });
 
-    var value = graph.text(480, 50, self.points + "/100" );
+    var value = graph.text(480, 50, self.points + "/" + (squares - bombs) );
     value.attr("fill", 'black');
     value.attr("font-size", "20");
     value.attr({ 'text-anchor': 'start' });
 
     self.setpoints = function (points: any) {
         self.points =  points;
-        value.attr("text", self.points + "/100");
+        value.attr("text", self.points + "/" + (squares - bombs));
     }
 }
 

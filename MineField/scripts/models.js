@@ -88,7 +88,7 @@
     }
     exports.field = field;
 
-    function score(graph) {
+    function score(graph, bombs, squares) {
         var self = this;
         self.points = 0;
 
@@ -97,14 +97,14 @@
         label.attr("font-size", "20");
         label.attr({ 'text-anchor': 'start' });
 
-        var value = graph.text(480, 50, self.points + "/100");
+        var value = graph.text(480, 50, self.points + "/" + (squares - bombs));
         value.attr("fill", 'black');
         value.attr("font-size", "20");
         value.attr({ 'text-anchor': 'start' });
 
         self.setpoints = function (points) {
             self.points = points;
-            value.attr("text", self.points + "/100");
+            value.attr("text", self.points + "/" + (squares - bombs));
         };
     }
     exports.score = score;

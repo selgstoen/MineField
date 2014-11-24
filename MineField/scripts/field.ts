@@ -11,12 +11,12 @@ var viewModel = function () {
     var graph = Raphael(0, 0, 1500, 1500);
     self.background = new models.background(graph);
     self.watch = new models.watch(graph);
-    self.score = new models.score(graph);
+    self.score = new models.score(graph, 15, 12 * 12);
     self.game = new models.game(graph);
     self.name = "Mine Field";
 
-    var bombPositions = bombService.getBombPositions(10, 10, 10);
-    self.field = new models.field(10, 10, bombPositions);
+    var bombPositions = bombService.getBombPositions(15, 12, 12);
+    self.field = new models.field(12, 12, bombPositions);
     for (var i = 0; i < self.field.rows().length; i++) {
         bombService.decorateCellsOnRow(self.field.rows()[i], bombPositions);
         displayService.printRow(graph, self.field.rows()[i], flippedCell);
