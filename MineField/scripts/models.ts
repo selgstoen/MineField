@@ -35,6 +35,7 @@ export function cell(rowNumber: number, columnNumber: number) {
     var self = this;
     self.rowNumber = rowNumber;
     self.columnNumber = columnNumber;
+    self.isMarkedAsBomb = false;
     self.isBomb = false;
     self.isFlipped = false;
     self.allCellsAroundFlipped = false;
@@ -59,9 +60,17 @@ export function cell(rowNumber: number, columnNumber: number) {
 
         return false;
     }
-    self.markBomb = function() {
-        self.label.attr("fill", "red");
-        self.label.attr("text", "B");
+    self.markBomb = function () {
+        if (self.isMarkedAsBomb) {
+            self.label.attr("fill", "#153f14");
+            self.label.attr("text", self.displayValue);
+            self.isMarkedAsBomb = false;
+        } else {
+            self.label.attr("fill", "red");
+            self.label.attr("text", "B");
+            self.isMarkedAsBomb = true;
+        }
+        
     }
 }
 

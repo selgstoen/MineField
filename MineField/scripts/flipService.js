@@ -45,4 +45,4 @@
     }
     exports.flipAroundCell = flipAroundCell;
 });
-//# sourceMappingURL=flipservice.js.map
+//# sourceMappingURL=flipService.js.map

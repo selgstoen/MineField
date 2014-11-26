@@ -1,4 +1,4 @@
-﻿define(["require", "exports", "knockout", "models", "bombservice", "displayservice", "flipservice"], function(require, exports, ko, models, bombService, displayService, flipService) {
+﻿define(["require", "exports", "knockout", "models", "flipservice", "bombservice", "displayservice"], function(require, exports, ko, models, flipService, bombService, displayService) {
     var viewModel = function () {
         var self = this;
 
@@ -28,6 +28,7 @@
                 if (cell.isBomb) {
                     cell.flip();
                     self.watch.stop();
+                    self.game.displayGameOver();
                     return;
                 }
                 if (cell.flip()) {

@@ -1,9 +1,10 @@
 ﻿
 import ko = require("knockout");
 import models = require("models");
+import flipService = require("flipservice");
 import bombService = require("bombservice");
 import displayService = require("displayservice");
-import flipService = require("flipservice");
+
 
 var viewModel = function () {
     var self = this;
@@ -33,6 +34,7 @@ var viewModel = function () {
         if (cell.isBomb) {
             cell.flip();
             self.watch.stop();
+            self.game.displayGameOver();
             return;
         }
         if (cell.flip()) {
