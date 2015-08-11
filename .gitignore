@@ -1,0 +1,25 @@
+# .NET-specific
+*.suo
+/*.sln.DotSettings
+*.DotSettings.user
+/**/*.csproj.user
+src/**/bin/
+src/**/obj/
+NuGet/**/*.nupkg
+NuGet/*.nupkg
+_NCrunch_*
+*.ncrunch*
+node_modules/
+packages/
+
+# OS-specific
+*.tmp
+.DS_Store
+*.thumbnails
+*.chk
+*.log
+*.jrs
+*.ide
+*.edb
+*.received.*
+*.dll

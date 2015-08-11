@@ -1,16 +1,18 @@
 ﻿define(["require", "exports", "knockout", "models", "flipservice", "bombservice", "displayservice"], function(require, exports, ko, models, flipService, bombService, displayService) {
     var viewModel = function () {
         var self = this;
+        var rows = 6;
+        var cols = 13;
 
         var graph = Raphael(0, 0, 1500, 1500);
         self.background = new models.background(graph);
         self.watch = new models.watch(graph);
-        self.score = new models.score(graph, 15, 12 * 12);
+        self.score = new models.score(graph, 15, rows * cols);
         self.game = new models.game(graph);
         self.name = "Mine Field";
 
-        var bombPositions = bombService.getBombPositions(15, 12, 12);
-        self.field = new models.field(12, 12, bombPositions);
+        var bombPositions = bombService.getBombPositions(15, rows, cols);
+        self.field = new models.field(rows, cols, bombPositions);
         for (var i = 0; i < self.field.rows().length; i++) {
             bombService.decorateCellsOnRow(self.field.rows()[i], bombPositions);
             displayService.printRow(graph, self.field.rows()[i], flippedCell);
