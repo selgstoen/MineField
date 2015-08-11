@@ -1,16 +1,14 @@
-﻿define(["require", "exports", "knockout", "models", "flipservice", "bombservice", "displayservice"], function(require, exports, ko, models, flipService, bombService, displayService) {
+define(["require", "exports", "knockout", "models", "flipservice", "bombservice", "displayservice"], function (require, exports, ko, models, flipService, bombService, displayService) {
     var viewModel = function () {
         var self = this;
         var rows = 6;
         var cols = 13;
-
         var graph = Raphael(0, 0, 1500, 1500);
         self.background = new models.background(graph);
         self.watch = new models.watch(graph);
         self.score = new models.score(graph, 15, rows * cols);
         self.game = new models.game(graph);
         self.name = "Mine Field";
-
         var bombPositions = bombService.getBombPositions(15, rows, cols);
         self.field = new models.field(rows, cols, bombPositions);
         for (var i = 0; i < self.field.rows().length; i++) {
@@ -18,12 +16,12 @@
             displayService.printRow(graph, self.field.rows()[i], flippedCell);
         }
         ;
-
         function flippedCell(e) {
             var cell = e.target.param;
             if (e.button === 2) {
                 cell.markBomb();
-            } else {
+            }
+            else {
                 if (!self.watch.running) {
                     self.watch.start();
                 }
@@ -37,7 +35,6 @@
                     flipService.flipAroundCell(cell, self.field);
                 }
             }
-
             self.score.setpoints(self.field.getNumberOfFlipped());
         }
     };

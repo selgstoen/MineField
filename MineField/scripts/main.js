@@ -1,4 +1,4 @@
-﻿/// <reference path="typings/requirejs/require.d.ts" />
+/// <reference path="typings/requirejs/require.d.ts" />
 /// <reference path="typings/raphael/raphael.d.ts" />
 /// <reference path="typings/knockout/knockout.d.ts" />
 (function () {
@@ -13,7 +13,6 @@
             "displayservice": "displayservice"
         }
     });
-
     require(['field'], function (field) {
     });
 })();

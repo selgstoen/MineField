@@ -20,7 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -69,8 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
-    <Content Include="scripts\knockout-3.2.0.debug.js" />
-    <Content Include="scripts\knockout-3.2.0.js" />
+    <Content Include="scripts\knockout-3.3.0.debug.js" />
+    <Content Include="scripts\knockout-3.3.0.js" />
     <Content Include="scripts\r.js" />
     <Content Include="scripts\raphael-min.js" />
     <Content Include="scripts\raphael.js" />
