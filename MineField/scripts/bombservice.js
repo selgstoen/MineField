@@ -74,4 +74,3 @@ define(["require", "exports", "models"], function (require, exports, models) {
     }
     exports.getBombPositions = getBombPositions;
 });
-//# sourceMappingURL=bombservice.js.map

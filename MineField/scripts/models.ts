@@ -40,7 +40,7 @@ export function cell(rowNumber: number, columnNumber: number) {
     self.isFlipped = false;
     self.allCellsAroundFlipped = false;
     self.numberOfCloseBombs = 0;
-    self.displayValue = rowNumber + ' - ' + columnNumber;
+    self.displayValue = "R:" + rowNumber + " - " + "C:" + columnNumber;
     self.square = ko.observable;
     self.label = ko.observable;
 
@@ -152,17 +152,17 @@ export function watch(graph: any) {
 
 export function game(graph: any) {
 
-    var rect = graph.rect(1000, 10, 100, 50);
-    rect.attr("fill", "gray");
-    rect.attr("stroke", "black");
-    rect.attr("stroke-width", 1);
-    rect.node.onclick = function () {
-        location.reload(true);
-    }
+    //var rect = graph.rect(1000, 10, 100, 50);
+    //rect.attr("fill", "gray");
+    //rect.attr("stroke", "black");
+    //rect.attr("stroke-width", 1);
+    //rect.node.onclick = function () {
+    //    location.reload(true);
+    //}
 
-    var value = graph.text(1050, 35,  "Reset");
-    value.attr("fill", 'black');
-    value.attr("font-size", "20");
-    value.node.onclick = rect.node.onclick;
+    //var value = graph.text(1050, 35,  "Reset");
+    //value.attr("fill", 'black');
+    //value.attr("font-size", "20");
+    //value.node.onclick = rect.node.onclick;
 }
 

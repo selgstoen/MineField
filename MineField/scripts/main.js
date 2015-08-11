@@ -5,8 +5,8 @@
     requirejs.config({
         baseUrl: "scripts",
         paths: {
-            "knockout": "knockout-3.2.0",
-            "raphael": "raphael",
+            "knockout": "knockout-3.3.0",
+            //"raphael": "raphael",
             "models": "models",
             "flipservice": "flipservice",
             "bombservice": "bombservice",
@@ -16,4 +16,3 @@
     require(['field'], function (field) {
     });
 })();
-//# sourceMappingURL=main.js.map
