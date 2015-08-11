@@ -34,6 +34,8 @@ define(["require", "exports", "knockout", "models", "bombservice"], function (re
         //        }
         //    }
         //    self.score.setpoints(self.field.getNumberOfFlipped());
+        //}
     };
     ko.applyBindings(new viewModel);
 });
+//# sourceMappingURL=field.js.map

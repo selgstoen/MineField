@@ -36,3 +36,4 @@ define(["require", "exports"], function (require, exports) {
     }
     exports.flipAroundCell = flipAroundCell;
 });
+//# sourceMappingURL=flipservice.js.map

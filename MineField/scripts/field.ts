@@ -45,6 +45,6 @@ var viewModel = function () {
     //    }
 
     //    self.score.setpoints(self.field.getNumberOfFlipped());
-    }
+   //}
 }
  ko.applyBindings(new viewModel); 
