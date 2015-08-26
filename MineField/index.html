@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<link href="styles/styles.css" rel="stylesheet" />
 <head>
     <title>Mine Filed</title>
     <!--<script src="scripts/raphael.js"></script>-->
@@ -8,7 +9,7 @@
         <h1><span data-bind="text : name"></span></h1>
         <table data-bind="foreach: field.rows">
             <tr data-bind="foreach: cells">
-                <td>[<span data-bind="text: displayValue"></span>] </td>
+                <td class="cell">[<span data-bind="text: displayValue"></span>] </td>
             </tr>
         </table>
         
